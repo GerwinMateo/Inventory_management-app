@@ -3,18 +3,20 @@ import { initializeApp, FirebaseApp } from "firebase/app";
 import { getFirestore, Firestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
-// Configure environment variables
-import "dotenv/config";
+// Load environment variables from .env file
+import dotenv from "dotenv";
+dotenv.config();
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBRhUWpw0b245_4tDnAKwMinXurRWEcCWw",
-  authDomain: "inventory-manager-6e035.firebaseapp.com",
-  projectId: "inventory-manager-6e035",
-  storageBucket: "inventory-manager-6e035.appspot.com",
-  messagingSenderId: "503910173702",
-  appId: "1:503910173702:web:1606f07bd6a94fc2158787",
+  apiKey: process.env.NEXT_PUBLIC_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_APP_ID,
 };
+
 // Initialize Firebase
 const app: FirebaseApp = initializeApp(firebaseConfig);
 const firestore: Firestore = getFirestore(app);

@@ -5,12 +5,11 @@ import { auth } from "@/firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { firestore } from "@/firebase";
 
-async function addUserToFirestore(userId, email, displayName) {
+async function addUserToFirestore(userId: string, email: string, displayName: string)  {
   try {
     const userDocRef = doc(firestore, 'users', userId);
     const userData = { email, displayName };
     await setDoc(userDocRef, userData);
-    console.log('User document successfully written!');
   } catch (e) {
     console.error('Error writing user document: ', e);
   }
